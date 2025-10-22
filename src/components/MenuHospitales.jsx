@@ -26,7 +26,7 @@ export class MenuHospitales extends Component {
         this.loadHospitales();
     }
 
-    
+
 
     render() {
 
@@ -58,6 +58,9 @@ export class MenuHospitales extends Component {
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" aria-current="page" to="/createhospital">Crear Hospital</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" aria-current="page" to="/hospitales">Hospitales</NavLink>
                             </li>
                         </ul>
                     </div>

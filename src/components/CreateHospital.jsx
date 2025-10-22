@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Global from '../Global';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 class CreateHospital extends Component {
 
     state = {
-        mensaje: ""
+        mensaje: "",
+        status: false
     }
 
     url = Global.apiHospitales;
@@ -34,17 +36,20 @@ class CreateHospital extends Component {
 
         axios.post(this.url + request, hospital).then(response => {
             this.setState({
-                mensaje: `¡Hospital ${hospital.idhospital} insertado con éxito!`
+                mensaje: `¡Hospital ${hospital.idhospital} insertado con éxito!`,
+                status: true
             });
             console.log("Hospital insertado con exito!");
         });
-        window.location.href="/";
     }
 
     render() {
         return (
             <div className='m-4'>
-
+                {
+                    this.state.status &&
+                    <Navigate to="/hospitales" />
+                }
                 <h2 className='mb-5'>Crear Hospital</h2>
                 <form className='w-50 bg-primary p-5 rounded-2' onSubmit={this.insertHospital}>
                     <div className='mb-3'>
